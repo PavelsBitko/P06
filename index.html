@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<title>Vienkāršu elektrisku shēmu modelēšana</title>
+<meta charset="utf-8"/>
+</head>
+<style>
+table, th, td {border: 1px solid black;}
+</style>
+<body>
+	<center><h1>"Vienkāršu elektrisku shēmu modelēšana"</h1>
+	<h4>Pāvels Bitko</h4>
+	<h4>171REB165</h4>
+	<h4>May 2018</h4></center>
+	<h1>Saturs</h1>
+	<ul>
+		<li><a href="#1">1. Teorētiskā daļa</a></li>
+		<li><a href="#11">1.1. Ķēdes aprēķins</a></li>
+		<li><a href="#2">2. Praktiskā daļa</a></li>
+		<li><a href="#21">2.1. Darbs ar GEDA programmām</a></li>
+		<li><a href="#211">2.1.1. Darbs ar gschem</a></li>
+		<li><a href="#212">2.1.2. darbs ar gnetlist</a></li>
+		<li><a href="#213">2.1.3. darbs ar ngspice</a></li>
+		<li><a href="#22">2.2. Darbs are QUCS programmām</a></li>
+		<li><a href="#221">2.2.1. Principāla shēma</a></li>
+		<li><a href="#222">2.2.2. Tabula un grafiks</a></li>
+		<li><a href="#lit">Izmantotas literatūras saraksts</a></li>			
+	<h1 id="1">1. Teorētiskā daļa</h1>
+	<h2 id="11">1.1. Ķēdes aprēķins</h2>
+	<img src="images/schem1.png">
+	<br>
+	V1 = 165/10 = 16.5 V<br>
+	R1 = 6+1 = 7 Ohm<br>
+	R2 = 5+1 = 6 Ohm<br>
+	<p>	Lai aprēķināt spriegumu uz R2 vajag izmantot sprieguma dalītāja formulu. [1] [2]	</p>
+	I = V1/(R1+R2) = 16.5/(6+7) = 1.27 A<br>
+	UR1 = I*R1 = 7*1.27 = 8.88 V<br>
+	UR2 = I*R2 = 6*1.27 = 7.61 V<br>
+	<p>	No šīm aprēķiniem es izveidoju tabulu ar rezultātiem (1.1)	</p>
+	<table>
+	  <caption> 1.1. Ķēdes elementu spriegumi un vērtības</caption>
+	  <tr>
+		<td>R1</td>
+		<td>7 Ohm</td>
+	  </tr>
+	  <tr>
+		<td>R2</td>
+		<td>6 Ohm</td>
+	  </tr>
+	  <tr>
+		<td>V1</td>
+		<td>16.5 V</td>
+	  </tr>
+	  <tr>
+		<td>UR1</td>
+		<td>8.88 V</td>
+	  </tr>
+	  <tr>
+		<td>UR2</td>
+		<td>7.61 V</td>
+	  </tr>
+	</table>
+	<img src="images/graph1.png"><br>
+	Figure 2.1: Elektriskā shēma no GEDA<br>
+	<img src="images/01.png" width="500"><br>
+	<h1 id="2">2. Praktiskā daļa</h1>
+	<h2 id="21">2.1. Darbs ar GEDA programmām</h2>
+	<h3 id="211">2.1.1. Darbs ar gschem</h3>
+	<p>Ar GEDA komandu gschem es izveidoju vienkāršo shēmu (2.1)</p>
+	<h3 id="212">2.1.2. darbs ar gnetlist</h3>
+	* Spice netlister for gnetlist <br>
+	V1 2 0 16.5 <br>
+	R2 0 1 6 <br>
+	R1 2 1 7 <br>
+	.END <br>
+	<h3 id="213">2.1.3. darbs ar ngspice</h3>
+	<p>Ar ngspice es izveidoju divus grafikus. Att. (2.2) un (2.3)</p>
+	<img src="images/011.png" width="300"><br>
+	Figure 2.2: Grafiks no ngspice (1)<br>
+	<img src="images/012.png" width="300"><br>
+	Figure 2.3: Grafiks no ngspice (2)<br>
+	<h2 id="22">2.2. Darbs are QUCS programmām</h2>
+	<h3 id="221">2.2.1. Principāla shēma</h3>
+	<img src="images/02.png" width="1000"><br>
+	Figure 2.4: Principāla shēma<br>
+	<p>Shēma ar visiem elementiem, R2 ir aizvietots ar x lai to izmantot kā argumentu Parameter Sweep analīzē. (2.4)</p>
+	<h3 id="222">2.2.2. Tabula un grafiks</h3>
+	<img src="images/02_tabula_grafiks.png" width="1000"><br>
+	Figure 2.5: Tabula un grafiks<br>
+	<p>Kā ir redzams no grafika spriegums uz R2 mainās proporcionāli R2 pretestības izmaiņai pret kopējo pretestību. (2.5)</p>
+	<h2 id="lit">Izmantotas literatūras saraksts</h2>
+	<ul>
+		<li>[1] Andrejs Strauts. Elektrotehnikas teorētiskie pamati, lekciju konspekts. –Rīga,
+RTU, 2008, -197 lpp.
+\bibitem{gramata2}</li>
+		<li>[2] Kārlis Brīvkalns. Ķēžu teorija. Vadonis Ķēžu teorijas studijām: praktiskās
+nodarbības, laboratorijas darbi, MatLab programmas,PSpice pielietojums. –Rīga,
+RTU, 2008, - 93 lpp.</li>
+	</u1>
+	</center>
+</body>
+</html>
